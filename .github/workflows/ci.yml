@@ -13,10 +13,15 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        python-version: [3.8, 3.9, 3.10, 3.11] # Оновлені версії Python
+        python-version: [3.8, 3.9, 3.10, 3.11]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Clear Python cache
+        run: |
+          python -m pip cache purge
+          rm -rf .pytest_cache
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
