@@ -1,4 +1,4 @@
- name: Simple CI Test
+name: Simple CI Test
 
 on:
   push:
@@ -15,4 +15,3 @@ jobs:
 
       - name: Hello World Test
         run: echo "Hello, GitHub Actions!"
-
