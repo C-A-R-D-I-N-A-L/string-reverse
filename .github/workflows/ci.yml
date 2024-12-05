@@ -10,10 +10,10 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
-        python-version: [3.8, 3.9, 3.10]
+        python-version: [3.8, 3.9, 3.10, 3.11] # Оновлені версії Python
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -26,8 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install -r requirements.txt
 
       - name: Run tests
-        run: |
-          if [ -f test_app.py ]; then pytest test_app.py; else echo "No tests found."; fi
+        run: pytest
